@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_26_045913) do
+ActiveRecord::Schema.define(version: 2021_12_26_080350) do
+
+  create_table "prefectures", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.string "google_map_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -20,4 +28,17 @@ ActiveRecord::Schema.define(version: 2021_12_26_045913) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "wants", force: :cascade do |t|
+    t.string "content"
+    t.integer "user_id", null: false
+    t.integer "prefecture_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "image"
+    t.index ["prefecture_id"], name: "index_wants_on_prefecture_id"
+    t.index ["user_id"], name: "index_wants_on_user_id"
+  end
+
+  add_foreign_key "wants", "prefectures"
+  add_foreign_key "wants", "users"
 end

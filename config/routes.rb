@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'wants/index'
+  get 'wants/show'
+  get 'wants/new'
+  get 'wants/create'
+  get 'wants/destroy'
   root to: 'toppages#index'
 
   get 'login', to: 'sessions#new'
@@ -7,4 +12,6 @@ Rails.application.routes.draw do
 
   get 'signup', to: 'users#new'
   resources :users, only: [:index, :show, :create]
+  resources :wants
+  resources :prefecture
 end

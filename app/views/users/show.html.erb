@@ -31,31 +31,38 @@
           </ul>
           <a href="" id="section1a1">Followerのとうこう</a>
         </div>
-     
-
+    
         <div id="profile-right">
-          
+         <% if @wants.any? %>
+          <% @wants.each do |want| %>
+          <% @prefectures.each do |prefecture| %>
             <div id="profile-right-right">
               <ul id="profile-right-rightul1">
-                <li id="profile-right-rightli1">都道府県名</li>
-                <li><a href="">削除</a></li>
+                <li id="profile-right-rightli1"><%= prefecture.name %></li>
+                <% if current_user == want.user %>
+                <li><%= link_to "削除", want, method: :delete, data: { confirm: "You sure?" } %></li>
+                <% end %>
               </ul>
-              <img src="post.png" alt="">
+              <%= prefecture.image %>
             </div>
 
             <div id="profile-right-left">
-              <p>美味しい物を食べたい<br>
-                心斎橋に行きたい。</p>
+              <p><%= want.content %></p>
               </div>
+               <% end %>
+               <% end %>
           </div>
+           <%== pagy_bootstrap_nav(@pagy) %>
+           <% end %>
         </div>
      </div>
-  </section>
+</section>
 
 
   <button id="btn3" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">ついかする</button>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<%= form_with(model: @want, local: true) do |f| %>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -67,78 +74,28 @@
           <form enctype="multipart/form-data" action="/areas" accept-charset="UTF-8" data-remote="true" method="post"><input type="hidden" name="authenticity_token" value="w1N3p1TrssWZRYiW+iVSZm2nFS/r/9xccMCM5ZFYrbpFhuyvptkOlrdHaHh/YxogTqWG0ra4K/zgO8FULd61kw==" />
             <div class="validate-area"></div>
             <div class="form-group">
-              <label for="area_country">都道府県</label><br/>
-              <select class="custom-select" name="area[country_id]" id="area_country_id"><option value="">選択してください</option>
-     
-      <option value="377">北海道</option>
-      <option value="960">青森</option>
-      <option value="373">岩手</option>
-      <option value="212">宮城</option>
-      <option value="976">秋田</option>
-      <option value="382">山形</option>
-      <option value="962">福島</option>
-      <option value="856">茨城</option>
-      <option value="371">栃木</option>
-      <option value="370">群馬</option>
-      <option value="218">埼玉</option>
-      <option value="423">千葉</option>
-      <option value="231">東京</option>
-      <option value="40">神奈川</option>
-      <option value="352">新潟</option>
-      <option value="250">富山</option>
-      <option value="266">石川</option>
-      <option value="961">福井</option>
-      <option value="9007">山梨</option>
-      <option value="86">長野</option>
-      <option value="236">岐阜</option>
-      <option value="389">静岡</option>
-      <option value="850">愛知</option>
-      <option value="27">三重</option>
-      <option value="211">滋賀</option>
-      <option value="886">京都</option>
-      <option value="1">大阪</option>
-      <option value="670">兵庫</option>
-      <option value="9212">奈良</option>
-      <option value="240">和歌山</option>
-      <option value="82">鳥取</option>
-      <option value="852">島根</option>
-      <option value="236">岡山</option>
-      <option value="389">広島</option>
-      <option value="850">山口</option>
-      <option value="27">徳島</option>
-      <option value="211">香川</option>
-      <option value="886">愛媛</option>
-      <option value="1">高知</option>
-      <option value="670">福岡</option>
-      <option value="9212">佐賀</option>
-      <option value="240">長崎</option>
-      <option value="82">熊本</option>
-      <option value="27">大分</option>
-      <option value="211">宮崎</option>
-      <option value="886">鹿児島</option>
-      <option value="1">沖縄</option></select>
+              <%= f.label :area_country_id, '都道府県' %>
+              <%= f.select :area_country_id, {'北海道': 337, '東京': 231, '愛知': 850, '大阪': 1, '京都': 886, '福岡': 670, '長崎': 240}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
             </div>
-          <!-- <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">場所:</label>
-            <input type="text" class="form-control" id="recipient-name" placeholder="京都の清水寺">
-          </div> -->
+      
           <div class="mb-3">
             <label for="message-text" class="col-form-label">したい事:</label>
-            <textarea class="form-control" id="message-text" placeholder="例:京都に行きたい！美味しいものを食べたい！"></textarea>
+             <%= f.text_area :content, class: 'form-control', rows: 3 %>
           </div>
           <div class="field">
-            <label for="area_image">がぞう</label><br/>
-            <input class="form-control-file" type="file" name="area[image]" id="area_image" />
+            <%= f.file_field :image %>
+            <%= f.submit 'アップロードする'%>
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">とじる</button>
-        <button type="button" class="btn btn-primary">ついか</button>
+        <%= f.submit 'ついかする', class: 'btn btn-primary' %>
       </div>
     </div>
   </div>
 </div>
+<% end %>
 
 <div class="container">
   <a class="btn btn-primary" href="" id="a3">Facebook</a>
@@ -157,5 +114,4 @@
   <div id="footer-right">
      <img src="assets/logo.png" alt="">
   </div>
-
 </footer>

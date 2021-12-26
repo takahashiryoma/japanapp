@@ -7,6 +7,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @want = current_user.wants.build
+    @pagy, @wants = pagy(current_user.wants.order(id: :desc))
+    counts(@user)
   end
 
   def new
