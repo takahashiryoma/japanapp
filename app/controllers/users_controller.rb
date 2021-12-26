@@ -12,6 +12,22 @@ class UsersController < ApplicationController
     counts(@user)
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+
+    if @user.update(user_params)
+      flash[:success] = '名前 は正常に更新されました'
+      redirect_to @user
+    else
+      flash.now[:danger] = '名前 は更新されませんでした'
+      render :edit
+    end
+  end
+
   def new
     @user = User.new
   end

@@ -3,9 +3,17 @@ class WantsController < ApplicationController
   before_action :correct_user, only: [:destroy]
 
   def index
+    @want = current_user.wants.build  # form_with 用
+    @pagy, @wants = pagy(current_user.wants.order(id: :desc))
+    @pagy, @users = pagy(User.order(id: :desc), items: 25)
   end
 
   def show
+    @user = User.find(params[:id])
+    @want = current_user.wants.build
+    @pagy, @wants = pagy(current_user.wants.order(id: :desc), item: 25)
+    @prefecture = current_user.prefecture.build
+    @pagy, @prefectures = pagy(current_user.prefectures.order(id: :desc), item: 25)
   end
 
   def new

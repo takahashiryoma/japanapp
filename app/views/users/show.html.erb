@@ -20,7 +20,7 @@
           <img class="rounded me-2" src="<%= gravatar_url(@user, { size: 200 }) %>" alt="">
            <ul id="section1ul1">
              <li><%= @user.name %></li>
-             <li><a href="" style="font-size: 12px;">Edit profile</a></li>
+             <li><%= link_to '編集', edit_user_path(@user) %></li>
            </ul>
           <%# <p id="section1p1">こんにちは。<br>TAKAです。大学生です。</p>  %>
           <ul id="section1ul2">
