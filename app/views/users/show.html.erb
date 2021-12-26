@@ -17,17 +17,17 @@
 
      <div class="container d-flex align-items-center" id="profile1">
         <div id="profile-left">
-          <img class="rounded me-2" src="<%= gravatar_url(@user, { size: 200 }) %>" alt="">
+          <img class="rounded me-2 rounded-circle" src="<%= gravatar_url(@user, { size: 200 }) %>" alt="">
            <ul id="section1ul1">
              <li><%= @user.name %></li>
              <li><%= link_to '編集', edit_user_path(@user) %></li>
            </ul>
           <%# <p id="section1p1">こんにちは。<br>TAKAです。大学生です。</p>  %>
           <ul id="section1ul2">
-            <li>100</li>
-            <li><a href="">Folloing</a></li>
-            <li>100</li>
-            <li><a href="">Followes</a></li>
+            <li><%= @count_followings %></li>
+            <li><a href="<%= followings_user_path(@user) %>">Folloing</a></li>
+            <li><%= @count_followers %></li>
+            <li><a href="<%= followers_user_path(@user) %>">Follwers</a></li>
           </ul>
           <a href="" id="section1a1">Followerのとうこう</a>
         </div>
