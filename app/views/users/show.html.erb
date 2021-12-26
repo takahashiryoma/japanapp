@@ -1,0 +1,161 @@
+<header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm" id="header1">
+    <img src="assets/logo.png" alt="">
+    <p class="h5 my-0 me-md-auto fw-normal">Let's know about Japan</p>
+
+    <div class="jumbotron"> 
+    <nav class="my-2 my-md-0 me-md-3">
+      <a class="p-2 text-dark" href="#">ホーム</a>
+      <a class="p-2 text-dark" href="#">みんなのとうこう</a>
+      <a class="p-2 text-dark" href="#"><%= link_to 'プロフィール', user_path(current_user) %></a>
+      <a class="p-2 text-dark" href="#"><%= link_to 'ログアウト', logout_path, method: :delete %></a>
+    </nav>
+  </div>
+  </header>
+
+  <section id="section6">
+    <h1 class="text-center" id="section1h1">プロフィール</h1>
+
+     <div class="container d-flex align-items-center" id="profile1">
+        <div id="profile-left">
+          <img class="rounded me-2" src="<%= gravatar_url(@user, { size: 200 }) %>" alt="">
+           <ul id="section1ul1">
+             <li><%= @user.name %></li>
+             <li><a href="" style="font-size: 12px;">Edit profile</a></li>
+           </ul>
+          <%# <p id="section1p1">こんにちは。<br>TAKAです。大学生です。</p>  %>
+          <ul id="section1ul2">
+            <li>100</li>
+            <li><a href="">Folloing</a></li>
+            <li>100</li>
+            <li><a href="">Followes</a></li>
+          </ul>
+          <a href="" id="section1a1">Followerのとうこう</a>
+        </div>
+     
+
+        <div id="profile-right">
+          
+            <div id="profile-right-right">
+              <ul id="profile-right-rightul1">
+                <li id="profile-right-rightli1">都道府県名</li>
+                <li><a href="">削除</a></li>
+              </ul>
+              <img src="post.png" alt="">
+            </div>
+
+            <div id="profile-right-left">
+              <p>美味しい物を食べたい<br>
+                心斎橋に行きたい。</p>
+              </div>
+          </div>
+        </div>
+     </div>
+  </section>
+
+
+  <button id="btn3" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">ついかする</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">いきたいところ・したいこと</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <form enctype="multipart/form-data" action="/areas" accept-charset="UTF-8" data-remote="true" method="post"><input type="hidden" name="authenticity_token" value="w1N3p1TrssWZRYiW+iVSZm2nFS/r/9xccMCM5ZFYrbpFhuyvptkOlrdHaHh/YxogTqWG0ra4K/zgO8FULd61kw==" />
+            <div class="validate-area"></div>
+            <div class="form-group">
+              <label for="area_country">都道府県</label><br/>
+              <select class="custom-select" name="area[country_id]" id="area_country_id"><option value="">選択してください</option>
+     
+      <option value="377">北海道</option>
+      <option value="960">青森</option>
+      <option value="373">岩手</option>
+      <option value="212">宮城</option>
+      <option value="976">秋田</option>
+      <option value="382">山形</option>
+      <option value="962">福島</option>
+      <option value="856">茨城</option>
+      <option value="371">栃木</option>
+      <option value="370">群馬</option>
+      <option value="218">埼玉</option>
+      <option value="423">千葉</option>
+      <option value="231">東京</option>
+      <option value="40">神奈川</option>
+      <option value="352">新潟</option>
+      <option value="250">富山</option>
+      <option value="266">石川</option>
+      <option value="961">福井</option>
+      <option value="9007">山梨</option>
+      <option value="86">長野</option>
+      <option value="236">岐阜</option>
+      <option value="389">静岡</option>
+      <option value="850">愛知</option>
+      <option value="27">三重</option>
+      <option value="211">滋賀</option>
+      <option value="886">京都</option>
+      <option value="1">大阪</option>
+      <option value="670">兵庫</option>
+      <option value="9212">奈良</option>
+      <option value="240">和歌山</option>
+      <option value="82">鳥取</option>
+      <option value="852">島根</option>
+      <option value="236">岡山</option>
+      <option value="389">広島</option>
+      <option value="850">山口</option>
+      <option value="27">徳島</option>
+      <option value="211">香川</option>
+      <option value="886">愛媛</option>
+      <option value="1">高知</option>
+      <option value="670">福岡</option>
+      <option value="9212">佐賀</option>
+      <option value="240">長崎</option>
+      <option value="82">熊本</option>
+      <option value="27">大分</option>
+      <option value="211">宮崎</option>
+      <option value="886">鹿児島</option>
+      <option value="1">沖縄</option></select>
+            </div>
+          <!-- <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">場所:</label>
+            <input type="text" class="form-control" id="recipient-name" placeholder="京都の清水寺">
+          </div> -->
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">したい事:</label>
+            <textarea class="form-control" id="message-text" placeholder="例:京都に行きたい！美味しいものを食べたい！"></textarea>
+          </div>
+          <div class="field">
+            <label for="area_image">がぞう</label><br/>
+            <input class="form-control-file" type="file" name="area[image]" id="area_image" />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">とじる</button>
+        <button type="button" class="btn btn-primary">ついか</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <a class="btn btn-primary" href="" id="a3">Facebook</a>
+</div>
+
+<footer>
+  <div id="footer-left">
+    <ul id="footerul">
+     <li><a href="">ホーム</a></li>
+     <li><a href="">みんなのとうこう</a></li>
+     <li><a href="">プロフィール</a></li>
+     <li><a href="">ログアウト</a></li>
+    </ul>
+  </div>
+
+  <div id="footer-right">
+     <img src="assets/logo.png" alt="">
+  </div>
+
+</footer>
