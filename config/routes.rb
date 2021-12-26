@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  get 'wants/index'
-  get 'wants/show'
-  get 'wants/new'
-  get 'wants/create'
-  get 'wants/destroy'
   root to: 'toppages#index'
 
   get 'login', to: 'sessions#new'

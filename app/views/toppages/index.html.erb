@@ -134,8 +134,8 @@
    <% if logged_in? %>
     <div class="jumbotron"> 
     <nav class="my-2 my-md-0 me-md-3">
-      <a class="p-2 text-dark" href="#">ホーム</a>
-      <a class="p-2 text-dark" href="#">みんなのとうこう</a>
+      <a class="p-2 text-dark" href="#"><%= link_to 'ホーム', root_path %></a>
+      <a class="p-2 text-dark" href="#"><%= link_to 'みんなのとうこう', wants_path %></a>
       <a class="p-2 text-dark" href="#"><%= link_to 'プロフィール', user_path(current_user) %></a>
       <a class="p-2 text-dark" href="#"><%= link_to 'ログアウト', logout_path, method: :delete %></a>
     </nav>

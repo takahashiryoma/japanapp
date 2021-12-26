@@ -1,2 +1,63 @@
-<h1>Wants#index</h1>
-<p>Find me in app/views/wants/index.html.erb</p>
+<header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm" id="header1">
+    <img src="logo.png" alt="">
+    <p class="h5 my-0 me-md-auto fw-normal">Let's know about Japan</p>
+
+    <div class="jumbotron"> 
+    <nav class="my-2 my-md-0 me-md-3">
+      <a class="p-2 text-dark" href="#"><%= link_to 'ホーム', root_path %></a>
+      <a class="p-2 text-dark" href="#"><%= link_to 'みんなのとうこう', wants_path %></a>
+      <a class="p-2 text-dark" href="#"><%= link_to 'プロフィール', user_path(current_user) %></a>
+      <a class="p-2 text-dark" href="#"><%= link_to 'ログアウト', logout_path, method: :delete %></a>
+    </nav>
+  </div>
+  </header>
+
+<div id="section5" class="container">
+   <h1 class="text-center">みんなのとうこう</h1>
+
+   <div id="section1-flex">
+
+     <div id="section1-left">
+
+       <div id="section1-left-left">
+        <img src="profile.png" alt="プロフィール画像">
+        <p>名前</p>
+       </div>
+
+       <div id="section1-left-right">
+         <p>都道府県</p>
+         <p>美味しいものが食べたい<br>〇〇に行ってみたい！</p>
+       </div>
+        
+     </div>
+
+     <div id="section1-right">
+       <ul>
+         <li>❤️</li>
+         <li>0</li>
+       </ul>
+     </div>
+   </div>
+</div>
+
+
+
+<div class="container">
+  <a class="btn btn-primary" href="" id="a3">Facebook</a>
+</div>
+
+<footer>
+  <div id="footer-left">
+    <ul id="footerul">
+     <li><a href="">ホーム</a></li>
+     <li><a href="">みんなのとうこう</a></li>
+     <li><a href="">プロフィール</a></li>
+     <li><a href="">ログアウト</a></li>
+    </ul>
+  </div>
+
+  <div id="footer-right">
+     <img src="logo.png" alt="">
+  </div>
+
+</footer>
