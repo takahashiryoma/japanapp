@@ -23,12 +23,14 @@
              <li><%= link_to '編集', edit_user_path(@user) %></li>
            </ul>
           <%# <p id="section1p1">こんにちは。<br>TAKAです。大学生です。</p>  %>
-          <ul id="section1ul2">
+          <ul id="section1ul2" class="ml-1">
             <li><%= @count_followings %></li>
             <li><a href="<%= followings_user_path(@user) %>">Folloing</a></li>
             <li><%= @count_followers %></li>
             <li><a href="<%= followers_user_path(@user) %>">Follwers</a></li>
-          </ul>
+            <li><%= @count_likes %></li>
+            <li><a href="<%= likes_user_path(@user) %>">Favorite</a></li>
+          </ul>  
           <a href="" id="section1a1">Followerのとうこう</a>
         </div>
     

@@ -1,5 +1,6 @@
-<header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm" id="header1">
-    <img src="logo.png" alt="">
+
+<header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm" id="header5">
+    <img src="assets/logo.png" alt="">
     <p class="h5 my-0 me-md-auto fw-normal">Let's know about Japan</p>
 
     <div class="jumbotron"> 
@@ -15,32 +16,31 @@
 <div id="section5" class="container">
    <h1 class="text-center">みんなのとうこう</h1>
 
-   <div id="section1-flex">
-   <% if @wants.any? %>
-      <% @wants.each do |want| %>
-     <div id="section1-left">
-       <div id="section1-left-left">
-        <img class="rounded me-2" src="<%= gravatar_url(want.user, { size: 50 }) %>" alt="">
-        <p><%= @user.name %></p>
-       </div>
-
-       <div id="section1-left-right">
-         <p><%= @prefecture.name %></p>
-         <p><%= @want.content %></p>
-       </div>
-       <%== pagy_bootstrap_nav(@pagy) %>
-        <% end %>
-      <% end %>
-     </div>
-
-     <div id="section1-right">
-       <ul>
-         <li><a href="" style="">❤️</a></li>
-         <li>0</li>
-       </ul>
-     </div>
-   </div>
+   <div class="container mt-5 mx-5 card"> 
+<% if @wants.any? %>
+  <ul class="list-unstyled">
+    <% @wants.each do |want| %>
+      <li class="mb-3 d-flex">
+        <img class="rounded me-2" src="<%= gravatar_url(user, { size: 50 }) %>" alt="">
+        <p><%= link_to 'View profile', user_path(user), class: "text-decoration-none" %></p>
+        <div>
+          <div>
+            <%= user.name %>
+          </div>
+          <div>
+            <p><%= @prefecture.name %></p>
+            <p><%= @want.content %></p>
+          </div>
+        </div>
+         <li><a href=""><%= render 'favorites/favorite_button', micropost: micropost %></a></li>
+         <li><%= @count_likes %></li>
+      </li>
+    <% end %>
+  </ul>
+  <%== pagy_bootstrap_nav(@pagy) %>
+<% end %>
 </div>
+</div> 
 
 
 
@@ -51,15 +51,15 @@
 <footer>
   <div id="footer-left">
     <ul id="footerul">
-     <li><a href="">ホーム</a></li>
-     <li><a href="">みんなのとうこう</a></li>
-     <li><a href="">プロフィール</a></li>
-     <li><a href="">ログアウト</a></li>
+     <li><a class="p-2 text-dark" href="#"><%= link_to 'ホーム', root_path %></a></li>
+     <li><a class="p-2 text-dark" href="#"><%= link_to 'みんなのとうこう', wants_path %></a></li>
+     <li><a class="p-2 text-dark" href="#"><%= link_to 'プロフィール', user_path(current_user) %></a></li>
+     <li><a class="p-2 text-dark" href="#"><%= link_to 'ログアウト', logout_path, method: :delete %></a></li>
     </ul>
   </div>
 
   <div id="footer-right">
-     <img src="logo.png" alt="">
+     <img src="assets/logo.png" alt="">
   </div>
 
 </footer>

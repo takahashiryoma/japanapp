@@ -16,7 +16,15 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users, only: [:index, :show, :new, :create] do
+    member do
+      get :likes
+    end
+  end
+
   resources :wants
   resources :prefecture
   resources :relationships, only: [:create, :destroy]
+  resources :favorites
+
 end

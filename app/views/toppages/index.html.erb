@@ -134,10 +134,10 @@
    <% if logged_in? %>
     <div class="jumbotron"> 
     <nav class="my-2 my-md-0 me-md-3">
-      <a class="p-2 text-dark" href="#"><%= link_to 'ホーム', root_path %></a>
-      <a class="p-2 text-dark" href="#"><%= link_to 'みんなのとうこう', wants_path %></a>
-      <a class="p-2 text-dark" href="#"><%= link_to 'プロフィール', user_path(current_user) %></a>
-      <a class="p-2 text-dark" href="#"><%= link_to 'ログアウト', logout_path, method: :delete %></a>
+      <a class="p-2 text-secondary" href="#" id="jumbotrona1"><%= link_to 'ホーム', root_path %></a>
+      <a class="p-2 text-secondary" href="#" id="jumbotrona1"><%= link_to 'みんなのとうこう', wants_path %></a>
+      <a class="p-2 text-secondary" href="#" id="jumbotrona1"><%= link_to 'プロフィール', user_path(current_user) %></a>
+      <a class="p-2 text-secondary" href="#" id="jumbotrona1"><%= link_to 'ログアウト', logout_path, method: :delete %></a>
     </nav>
   </div>
   </header>
@@ -212,10 +212,10 @@
 <footer>
   <div id="footer-left">
     <ul id="footerul">
-     <li><a href="">ホーム</a></li>
-     <li><a href="">みんなのとうこう</a></li>
-     <li><a href="">プロフィール</a></li>
-     <li><a href="">ログアウト</a></li>
+     <li><a href=""><%= link_to 'ホーム', root_path %></a></li>
+     <li><a href=""><%= link_to 'みんなのとうこう', wants_path %></a></li>
+     <li><a href=""><%= link_to 'プロフィール', user_path(current_user) %></a></li>
+     <li><a href=""><%= link_to 'ログアウト', logout_path, method: :delete %></a></li>
     </ul>
   </div>
 

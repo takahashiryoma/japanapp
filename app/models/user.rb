@@ -7,6 +7,10 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :wants
+  has_many :favorites
+  has_many :fav_wants, through: :favorites, source: :want
+
+
   has_many :relationships
   has_many :followings, through: :relationships, source: :follow
   has_many :reverses_of_relationship, class_name: 'Relationship', foreign_key: 'follow_id'
@@ -25,5 +29,18 @@ class User < ApplicationRecord
 
   def following?(other_user)
     self.followings.include?(other_user)
+  end
+
+  def like(want)
+    favorites.find_or_create_by(want_id: want.id)
+   end
+
+   def unlike(want)
+    favorite = favorites.find_by(want_id: want.id)
+    favorite.destroy if favorite
+   end
+
+   def liked?(other_user)
+    self.fav_wants.include?(other_user)
   end
 end

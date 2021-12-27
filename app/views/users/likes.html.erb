@@ -29,7 +29,7 @@
             <li><a href="<%= followings_user_path(@user) %>">Folloing</a></li>
             <li><%= @count_followers %></li>
             <li><a href="<%= followers_user_path(@user) %>">Follwers</a></li>
-             <li><%= @count_likes %></li>
+            <li><%= @count_likes %></li>
             <li><a href="<%= likes_user_path(@user) %>">Favorite</a></li>
           </ul>
           <a class="mx-5" href="" id="section1a1">Followerのとうこう</a>
@@ -38,12 +38,12 @@
   </aside>
   <div class="col-sm-8">
     <ul class="nav nav-tabs nav-justified mb-3">
-      <li class="nav-item"><a href="<%= followings_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followings_user_path(@user)) %>">Followings  <span class="badge bg-secondary"><%= @count_followings %></span></a></li>
-      <li class="nav-item"><a href="<%= followers_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followers_user_path(@user)) %>">Followers  <span class="badge bg-secondary"><%= @count_followers %></span></a></li>
+        <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">Favorite  <span class="badge bg-secondary"><%= @count_likes %></span></a></li>
+    </ul>
     </ul>
 
-    <%# #↓フォロー表示 %>
-      <%# <%= render 'users', users: @followings %>  
+    <%# #↓ %>
+      <%# <%= render 'wants/wants', wants: @favorites %>  
   </div>
 </div>
 </section>

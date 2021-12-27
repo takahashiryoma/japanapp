@@ -115,7 +115,7 @@ a {
 }
 
 
-#header6 {
+#header1 {
   position: fixed;
   top: 0;
   left: 0;
@@ -129,7 +129,7 @@ a {
     height: auto;  
 }
 
-header img {
+#header1 img {
     height: 30px;
     width: 30px;
     margin-right: 5px;
@@ -260,7 +260,7 @@ footer {
   display: flex;
   justify-content: space-between;
   height: 250px;
-  background-color: darkgray;
+  background-color: darkblue;
 }
 
 #footer-left {
